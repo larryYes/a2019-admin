@@ -42,7 +42,7 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/example/table',
     name: '用户管理',
-    meta: { title: '用户管理', icon: '' },
+    meta: { title: '用户管理', icon: 'tree' },
     children: [
       {
         path: 'list',
@@ -54,7 +54,23 @@ export const constantRouterMap = [
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        meta: { title: 'Tree', icon: '' }
+      }
+    ]
+  },
+  // 部署bot
+  {
+    path: '/v3/automations',
+    component: Layout,
+    redirect: '',
+    name: '部署',
+    meta: { title: '机器人部署', icon: '' },
+    children: [
+      {
+        path: 'deploy',
+        name: '部署',
+        component: () => import('@/views/v3/deploy.vue'),
+        meta: { title: '部署页面', icon: 'tree' }
       }
     ]
   },
