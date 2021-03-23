@@ -64,9 +64,9 @@ export default {
     }
     return {
       loginForm: {
-        username: 'apiadmin',
-        password: '123456789',
-        apiKey: '_U1?Z?3hZF9Zvh[>QQr6Xjcv6h3p{7Nl[VOBW~uq'
+        username: 'duchapiadmin',
+        password: '1qaz@WSX',
+        apiKey: 'o97<qrEs`05>6VTy~Kuf~;H0;QbE9rn_eZMJ<Ipd'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
