@@ -16,5 +16,13 @@ export default {
             method: `post`,
             data: {}
         })
+    },
+    // 获取所有runner用户
+    getRunnerUsers(){
+        return request({
+            url: `/url/v1/devices/runasusers/list`,
+            method: `post`,
+            data: {}
+        })
     }
 }
