@@ -79,18 +79,43 @@ export const constantRouterMap = [
     path:'/roles',
     component: Layout,
     // redirect: 'noRedirect',
-    name: '角色列表',
-    meta: {title: '角色列表'},
+    meta: {title: '角色列表',icon: 'tree'},
     children: [
       {
         path: 'list',
         name: '角色列表',
         component: () => import('@/views/v1/role/index.vue'),
-        meta:  {title: '角色列表'}
+        meta:  {title: '角色列表',icon:'tree'}
       }
     ]
-    
-
+  },
+  //活动
+  {
+    path:'/activity',
+    component: Layout,
+    meta: {title: '活动',icon: 'tree'},
+    children:[
+      {
+        path: 'inprogress',
+        component: () => import('@/views/v2/Bot Execution Orchestrator/inprogress.vue'),
+        meta: {title: '正在进行',icon: 'form'},
+      },
+      {
+        path: 'schedule',
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/schedule.vue'),
+        meta: {title: '已计划',icon:'form'}
+      },
+      {
+        path: 'triggers',
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/triggers.vue'),
+        meta: {title: '事件触发器',icon:'form'}
+      },
+      {
+        path: 'historical',
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/historical'),
+        meta: {title: '历史',icon:'form'}
+      }
+    ]
   }  
   //   {
   //     path: '/example',
