@@ -49,24 +49,24 @@ export default {
   name: 'Login',
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!isvalidUsername(value)) {
-        callback(new Error('请输入正确的用户名'))
-      } else {
+      // if (!isvalidUsername(value)) {
+      //   callback(new Error('请输入正确的用户名'))
+      // } else {
         callback()
-      }
+      // }
     }
     const validatePass = (rule, value, callback) => {
-      if (value.length < 5) {
-        callback(new Error('密码不能小于5位'))
-      } else {
+      // if (value.length < 5) {
+      //   callback(new Error('密码不能小于5位'))
+      // } else {
         callback()
-      }
+      // }
     }
     return {
       loginForm: {
-        username: 'apiadmin',
+        username: '',
         password: '',
-        apiKey: '_U1?Z?3hZF9Zvh[>QQr6Xjcv6h3p{7Nl[VOBW~uq'
+        apiKey: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
