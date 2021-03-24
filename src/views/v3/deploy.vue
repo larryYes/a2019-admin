@@ -7,11 +7,13 @@
           :key="bot.id"
           :label="bot.name"
           :value="bot.id">
+          <span style="float: left">{{ bot.name }}</span>
+          <span style="float: right; color: #8492a6; font-size: 10px">{{ bot.path }}</span>
         </el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="项目名称" >
-      <el-input v-model="deployData.automationName" placeholder="选填"></el-input>
+      <el-input  v-model="deployData.automationName"   placeholder="选填"></el-input>
     </el-form-item>
     <el-form-item label="Runner用户">
       <el-select v-model="deployData.runAsUserIds[0]" placeholder="请选择用户">
@@ -39,7 +41,7 @@
       <el-button>取消</el-button>
     </el-form-item>
     <el-form-item label="返回参数">
-      <el-input type="textarea" v-model="respData"></el-input>
+      <el-input autosize type="textarea" v-model="respData"></el-input>
     </el-form-item>
   </el-form>
 </template>
