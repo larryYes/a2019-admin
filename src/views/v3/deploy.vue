@@ -1,8 +1,5 @@
 <template>
   <el-form ref="deployData" :model="deployData" label-width="150px">
-    <el-form-item label="项目名称" >
-      <el-input v-model="deployData.automationName" placeholder="选填"></el-input>
-    </el-form-item>
     <el-form-item label="BOT">
       <el-select v-model="deployData.fileId"  filterable placeholder="请选择BOT">
         <el-option
@@ -12,6 +9,9 @@
           :value="bot.id">
         </el-option>
       </el-select>
+    </el-form-item>
+    <el-form-item label="项目名称" >
+      <el-input v-model="deployData.automationName" placeholder="选填"></el-input>
     </el-form-item>
     <el-form-item label="Runner用户">
       <el-select v-model="deployData.runAsUserIds[0]" placeholder="请选择用户">
