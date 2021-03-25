@@ -51,11 +51,18 @@ export const constantRouterMap = [
         meta: { title: '用户列表', icon: 'table' }
       },
       {
+        path: '/roles',
+        name: '角色列表',
+        component: () => import('@/views/v1/role/index.vue'),
+        meta: {title: '角色列表', icon: 'table'}
+
+      },
+      {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: 'Tree', icon: '' }
-      }
+      },
     ]
   },
   // 部署bot
@@ -71,21 +78,6 @@ export const constantRouterMap = [
         name: '部署',
         component: () => import('@/views/v3/deploy.vue'),
         meta: { title: '部署页面', icon: 'tree' }
-      }
-    ]
-  },
-  //角色管理
-  {
-    path:'/roles',
-    component: Layout,
-    // redirect: 'noRedirect',
-    meta: {title: '角色列表',icon: 'tree'},
-    children: [
-      {
-        path: 'list',
-        name: '角色列表',
-        component: () => import('@/views/v1/role/index.vue'),
-        meta:  {title: '角色列表',icon:'tree'}
       }
     ]
   },
@@ -116,6 +108,12 @@ export const constantRouterMap = [
         meta: {title: '历史',icon:'form'}
       }
     ]
+  },
+  //项目详情页
+  {
+    path: '/activity/inProgress/:id/detail',
+    name: 'detail',
+    component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
   }  
   //   {
   //     path: '/example',
