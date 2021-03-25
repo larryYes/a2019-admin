@@ -116,6 +116,12 @@ export const constantRouterMap = [
         meta: {title: '历史',icon:'form'}
       }
     ]
+  },
+  //项目详情页
+  {
+    path: '/activity/inProgress/:id/detail',
+    name: 'detail',
+    component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
   }  
   //   {
   //     path: '/example',
