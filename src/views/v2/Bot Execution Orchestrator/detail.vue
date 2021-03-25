@@ -1,5 +1,6 @@
 <template>
-  <h2>这是{{req.automationName}}的详情页面</h2>
+  <h2>{{req.automationName}}</h2>
+  
 </template>
 
 <script>
