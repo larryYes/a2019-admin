@@ -88,7 +88,7 @@ export default {
           "": {
             type: "",
             number: "",
-          },
+          }
         },
       },
       respData: undefined,
