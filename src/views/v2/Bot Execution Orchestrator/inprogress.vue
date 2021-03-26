@@ -81,7 +81,7 @@ export default {
     },
   },
   mounted() {
-    //10秒刷新一次数据
+    //3秒刷新一次数据
     setInterval(() => {
       this.number = this.number + 1;
     }, 3000);

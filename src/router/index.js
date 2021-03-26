@@ -110,9 +110,16 @@ export const constantRouterMap = [
     ]
   },
   //项目详情页
+  //正在进行
   {
     path: '/activity/inProgress/:id/detail',
-    name: 'detail',
+    name: 'InProgressDetail',
+    component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
+  },
+  //历史
+  {
+    path: '/activity/historical/:id/detail',
+    name: 'historicalDetail',
     component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
   }  
   //   {
