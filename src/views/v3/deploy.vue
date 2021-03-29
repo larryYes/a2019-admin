@@ -20,11 +20,8 @@
         </el-option>
       </el-select>
       <ul>
-        <li v-for="(variable,index) in variables" v-bind:key="index">
-          <el-input placeholder="请输入变量值">
-            <template slot="append">{{ variable.type }}</template>
-            <template slot="prepend">{{ variable.name }}</template>
-          </el-input>
+        <li v-for="(variable, index) in variables" v-bind:key="index">
+          {{ variable.name }}——{{ variable.type }}
         </li>
       </ul>
     </el-form-item>
@@ -84,12 +81,6 @@ export default {
         runAsUserIds: [],
         poolIds: [],
         overrideDefaultDevice: false,
-        botInput: {
-          "": {
-            type: "",
-            number: "",
-          }
-        },
       },
       respData: undefined,
       runnerList: [],
@@ -104,12 +95,12 @@ export default {
     this.getPoolList(); // 初始化pool
     this.getBotList(); // 初始化bot
   },
-  mounted(){
-   console.log(this.deployData.botInput) 
-   console.log('test0')
-   console.log(this.deployData.botInput.keys) 
-   console.log('test1')
-   console.log(this.deployData.botInput) 
+  mounted() {
+    // console.log(this.deployData.botInput);
+    // console.log("test0");
+    // console.log(this.deployData.botInput.keys);
+    // console.log("test1");
+    // console.log(this.varia);
   },
 
   methods: {
@@ -168,7 +159,6 @@ export default {
           console.log(error);
         });
     },
-
 
   },
 };
