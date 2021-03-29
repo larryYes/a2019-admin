@@ -1,11 +1,12 @@
 import request from '@/utils/request'
 
-export default{
+export default {
     //获取schedules list
-    getAllSchedules(){
+    getAllSchedules(data) {
         return request({
-            url: '/url/v1/schedule/automations/list',
-            method: 'post'
+            url: `/url/v1/schedule/automations/list`,
+            method: `post`,
+            data: data
         })
     }
 }
