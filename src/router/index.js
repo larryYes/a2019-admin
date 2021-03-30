@@ -29,42 +29,14 @@ export const constantRouterMap = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    name: 'Dashboard',
+    name: '主页',
     hidden: true,
     children: [{
       path: 'dashboard',
       component: () => import('@/views/dashboard/index')
     }]
   },
-  // 用户管理
-  {
-    path: '/users',
-    component: Layout,
-    redirect: '/example/table',
-    name: '用户管理',
-    meta: { title: '用户管理', icon: 'tree' },
-    children: [
-      {
-        path: 'list',
-        name: '用户列表',
-        component: () => import('@/views/v1/user/index.vue'),
-        meta: { title: '用户列表', icon: 'table' }
-      },
-      {
-        path: '/roles',
-        name: '角色列表',
-        component: () => import('@/views/v1/role/index.vue'),
-        meta: {title: '角色列表', icon: 'table'}
 
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: '' }
-      },
-    ]
-  },
   // 部署bot
   {
     path: '/v3/automations',
@@ -89,39 +61,77 @@ export const constantRouterMap = [
     children:[
       {
         path: 'inprogress',
+        name: '正在进行',
         component: () => import('@/views/v2/Bot Execution Orchestrator/inprogress.vue'),
         meta: {title: '正在进行',icon: 'form'},
       },
+      //正在进行-项目详情页
+      {
+        path: '/activity/inProgress/:id/detail',
+        name: '项目详情',
+        hidden: true,
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
+      },
       {
         path: 'schedule',
+        name: '已计划',
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/schedule.vue'),
         meta: {title: '已计划',icon:'form'}
       },
       {
         path: 'triggers',
+        name: '事件触发器',
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/triggers.vue'),
         meta: {title: '事件触发器',icon:'form'}
       },
       {
         path: 'historical',
+        name: '历史',
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/historical'),
         meta: {title: '历史',icon:'form'}
-      }
+      },
+      //历史-项目详情页
+      {
+        path: '/activity/historical/:id/detail',
+        name: 'historicalDetail',
+        hidden: true,
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
+      }  
     ]
   },
-  //项目详情页
-  //正在进行
-  {
-    path: '/activity/inProgress/:id/detail',
-    name: 'InProgressDetail',
-    component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
-  },
-  //历史
-  {
-    path: '/activity/historical/:id/detail',
-    name: 'historicalDetail',
-    component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
-  }  
+    // 系统管理
+    {
+      path: '/system',
+      component: Layout,
+      redirect: '/example/table',
+      name: '系统管理',
+      meta: { title: '系统管理', icon: 'tree' },
+      children: [
+        {
+          path: 'list',
+          name: '用户列表',
+          component: () => import('@/views/v1/user/index.vue'),
+          meta: { title: '用户列表', icon: 'table' }
+        },
+        {
+          path: 'roles',
+          name: '角色列表',
+          component: () => import('@/views/v1/role/index.vue'),
+          meta: {title: '角色列表', icon: 'table'}
+  
+        },
+        {
+          path: 'devices',
+          name: '设备列表',
+          component: () => import('@/views/v2/Bot Execution Orchestrator/devices.vue'),
+          meta: { title: '设备列表', icon: 'table' }
+        },
+      ]
+    },
+
+
+
+  
   //   {
   //     path: '/example',
   //     component: Layout,
