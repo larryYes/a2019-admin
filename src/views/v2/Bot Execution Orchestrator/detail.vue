@@ -1,6 +1,5 @@
 <template>
   <h2>{{req.automationName}}</h2>
-  
 </template>
 
 <script>

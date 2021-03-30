@@ -29,7 +29,7 @@ export const constantRouterMap = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    name: 'Dashboard',
+    name: '主页',
     hidden: true,
     children: [{
       path: 'dashboard',
@@ -61,27 +61,45 @@ export const constantRouterMap = [
     children:[
       {
         path: 'inprogress',
+        name: '正在进行',
         component: () => import('@/views/v2/Bot Execution Orchestrator/inprogress.vue'),
         meta: {title: '正在进行',icon: 'form'},
       },
+      //正在进行-项目详情页
+      {
+        path: '/activity/inProgress/:id/detail',
+        name: '项目详情',
+        hidden: true,
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
+      },
       {
         path: 'schedule',
+        name: '已计划',
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/schedule.vue'),
         meta: {title: '已计划',icon:'form'}
       },
       {
         path: 'triggers',
+        name: '事件触发器',
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/triggers.vue'),
         meta: {title: '事件触发器',icon:'form'}
       },
       {
         path: 'historical',
+        name: '历史',
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/historical'),
         meta: {title: '历史',icon:'form'}
-      }
+      },
+      //历史-项目详情页
+      {
+        path: '/activity/historical/:id/detail',
+        name: 'historicalDetail',
+        hidden: true,
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
+      }  
     ]
   },
-    // 用户管理
+    // 系统管理
     {
       path: '/system',
       component: Layout,
@@ -110,19 +128,10 @@ export const constantRouterMap = [
         },
       ]
     },
-  //项目详情页
-  //正在进行
-  {
-    path: '/activity/inProgress/:id/detail',
-    name: 'InProgressDetail',
-    component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
-  },
-  //历史
-  {
-    path: '/activity/historical/:id/detail',
-    name: 'historicalDetail',
-    component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
-  }  
+
+
+
+  
   //   {
   //     path: '/example',
   //     component: Layout,

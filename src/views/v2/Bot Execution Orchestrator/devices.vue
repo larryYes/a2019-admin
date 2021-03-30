@@ -27,7 +27,6 @@ export default {
   methods: {
     getAllDevice(){
       botExecutionOrchestrator.devicesList().then(response =>{
-          debugger
         this.deviceList = response.list
       })
       .catch((error) =>{
