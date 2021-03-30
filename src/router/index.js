@@ -36,35 +36,7 @@ export const constantRouterMap = [
       component: () => import('@/views/dashboard/index')
     }]
   },
-  // 用户管理
-  {
-    path: '/users',
-    component: Layout,
-    redirect: '/example/table',
-    name: '用户管理',
-    meta: { title: '用户管理', icon: 'tree' },
-    children: [
-      {
-        path: 'list',
-        name: '用户列表',
-        component: () => import('@/views/v1/user/index.vue'),
-        meta: { title: '用户列表', icon: 'table' }
-      },
-      {
-        path: '/roles',
-        name: '角色列表',
-        component: () => import('@/views/v1/role/index.vue'),
-        meta: {title: '角色列表', icon: 'table'}
 
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: '' }
-      },
-    ]
-  },
   // 部署bot
   {
     path: '/v3/automations',
@@ -109,6 +81,35 @@ export const constantRouterMap = [
       }
     ]
   },
+    // 用户管理
+    {
+      path: '/system',
+      component: Layout,
+      redirect: '/example/table',
+      name: '系统管理',
+      meta: { title: '系统管理', icon: 'tree' },
+      children: [
+        {
+          path: 'list',
+          name: '用户列表',
+          component: () => import('@/views/v1/user/index.vue'),
+          meta: { title: '用户列表', icon: 'table' }
+        },
+        {
+          path: 'roles',
+          name: '角色列表',
+          component: () => import('@/views/v1/role/index.vue'),
+          meta: {title: '角色列表', icon: 'table'}
+  
+        },
+        {
+          path: 'devices',
+          name: '设备列表',
+          component: () => import('@/views/v2/Bot Execution Orchestrator/devices.vue'),
+          meta: { title: '设备列表', icon: 'table' }
+        },
+      ]
+    },
   //项目详情页
   {
     path: '/activity/inProgress/:id/detail',
