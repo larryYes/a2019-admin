@@ -3,6 +3,7 @@
     <!-- <el-table-column prop="status" label="类型" width="180"></el-table-column> -->
     <el-table-column prop="name" label="活动名称" width="180"></el-table-column>
     <el-table-column prop="zonedNextRunDateTime" label="下一次发生" width="200"></el-table-column>
+    <el-table-column prop="fileName" label="bot名称" width="100"></el-table-column>
     <!-- <el-table-column label="操作" width="120"> -->
     <!-- <template slot-scope="scope">
         <el-button @click.prevent="skipDetailPage(scope.row.id)" type="text" size="small">项目详情</el-button>
@@ -37,12 +38,12 @@ export default {
           console.log(error);
         });
     },
-    skipDetailPage(id) {
-      this.$router.push({
-        path: `/activity/inProgress/${id}/detail`,
-        query: { param: this.param },
-      });
-    },
+    // skipDetailPage(id) {
+    //   this.$router.push({
+    //     path: `/activity/inProgress/${id}/detail`,
+    //     query: { param: this.param },
+    //   });
+    // },
   },
   mounted() {
     //3秒刷新一次数据

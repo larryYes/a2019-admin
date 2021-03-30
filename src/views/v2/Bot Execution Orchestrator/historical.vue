@@ -41,6 +41,7 @@ export default {
   },
   created() {
     this.getAllHistoricalBot();
+    
   },
   methods: {
     getAllHistoricalBot() {

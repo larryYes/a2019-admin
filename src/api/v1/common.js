@@ -27,7 +27,14 @@ export default {
         return request({
             url: '/url/v1/activity/history/list',
             method: 'post',
-            data
+            data:data
+        })
+    },
+    getTriggers(data){
+        return request({
+            url: '/url/v1/triggers/triggermapping/list',
+            method: 'post',
+            data:data
         })
     }
 }
