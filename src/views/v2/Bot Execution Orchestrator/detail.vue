@@ -14,13 +14,19 @@ export default {
     },
     created(){
         this.id = this.$route.params.id
-        common.getDetailInfo(this.id).then((response) =>{
+        this.loadInfo()
+    },
+    methods:{
+        loadInfo(){
+            common.getDetailInfo(this.id).then((response) =>{
             this.req = response;
+            console.log(response)
         })
         .catch((error) => {
             console.log(error);
         })
-    },
+        }
+    }
     
 
 }
