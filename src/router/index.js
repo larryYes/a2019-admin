@@ -57,6 +57,7 @@ export const constantRouterMap = [
   {
     path:'/activity',
     component: Layout,
+    name: '活动',
     meta: {title: '活动',icon: 'tree'},
     children:[
       {
@@ -125,6 +126,12 @@ export const constantRouterMap = [
           name: '设备列表',
           component: () => import('@/views/v2/Bot Execution Orchestrator/devices.vue'),
           meta: { title: '设备列表', icon: 'table' }
+        },
+        {
+          path: 'pools',
+          name: '设备池列表',
+          component: () => import('@/views/v2/pool/pools.vue'),
+          meta: { title: '设备池列表', icon: 'table' }
         },
       ]
     },
