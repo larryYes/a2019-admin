@@ -5,7 +5,6 @@
       <el-button type="primary" @click="activateSchedule()">激活</el-button>
       <el-button type="primary" @click="deactivateSchedule()">停用</el-button>
       <el-button type="danger" @click="deleteSchedule()">删除</el-button>
-      
     </div>
     <el-table
       ref="multipleTable"
@@ -100,7 +99,7 @@ export default {
       for (let i = 0; i < this.multipleSelection.length; i++) {
         selectedIDs = selectedIDs + this.multipleSelection[i].id + "%2C";
       }
-      selectedIDs = selectedIDs.slice(0,-3)
+      selectedIDs = selectedIDs.slice(0, -3);
       automations
         .deleteSchedules(selectedIDs)
         .then((response) => {
