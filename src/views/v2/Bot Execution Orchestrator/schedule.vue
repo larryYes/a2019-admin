@@ -1,9 +1,11 @@
 <template>
   <div>
     <div style="margin-top: 20px">
+      <el-button type="primary" @click="getAllSchedule()">刷新</el-button>
       <el-button type="primary" @click="activateSchedule()">激活</el-button>
       <el-button type="primary" @click="deactivateSchedule()">停用</el-button>
       <el-button type="danger" @click="deleteSchedule()">删除</el-button>
+      
     </div>
     <el-table
       ref="multipleTable"

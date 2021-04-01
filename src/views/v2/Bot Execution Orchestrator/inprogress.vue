@@ -1,4 +1,8 @@
 <template>
+<div>
+  <div style="margin-top: 20px">
+    <el-button type="primary" @click="getAllInprogressBot()">刷新</el-button>
+  </div>
   <el-table :data="inprogressList" style="width: 100%">
     <el-table-column prop="status" label="状态" width="180"></el-table-column>
     <el-table-column prop="automationName" label="项目名称" width="180"></el-table-column>
@@ -9,6 +13,8 @@
       </template>
     </el-table-column>
   </el-table>
+</div>
+
 </template>
 
 <script>

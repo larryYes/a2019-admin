@@ -1,4 +1,8 @@
 <template>
+<div>
+  <div style="margin-top: 20px">
+    <el-button type="primary" @click="getAllTrigger()">刷新</el-button>
+  </div>
   <el-table :data="triggerList" style="width: 100%">
     <el-table-column prop="userId" label="用户ID" width="180"></el-table-column>
     <el-table-column prop="id" label="用户" width="200"></el-table-column>
@@ -10,6 +14,7 @@
       </template>S
     </el-table-column>-->
   </el-table>
+  </div>
 </template>
 
 <script>
