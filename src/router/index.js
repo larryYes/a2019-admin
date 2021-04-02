@@ -71,7 +71,7 @@ export const constantRouterMap = [
         path: '/activity/inProgress/:id/detail',
         name: '项目详情',
         hidden: true,
-        component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/inprogressDetail')
       },
       {
         path: 'schedule',
@@ -96,7 +96,7 @@ export const constantRouterMap = [
         path: '/activity/historical/:id/detail',
         name: 'historicalDetail',
         hidden: true,
-        component: ()=> import('@/views/v2/Bot Execution Orchestrator/detail')
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/historicalDetail')
       }  
     ]
   },

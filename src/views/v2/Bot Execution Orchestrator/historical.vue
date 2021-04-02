@@ -78,20 +78,19 @@ export default {
     },
     //向下翻页
     pageDown() {
-      this.body.page.offset += this.body.page.length
-      this.getAllHistoricalBot()
+      this.body.page.offset += this.body.page.length;
+      this.getAllHistoricalBot();
     },
     //向上翻页
     pageUp() {
-      this.body.page.offset -= this.body.page.length
-      this.getAllHistoricalBot()
+      this.body.page.offset -= this.body.page.length;
+      this.getAllHistoricalBot();
     },
     //跳转页面
-    pageJump(val){
-      
-      this.body.page.offset = this.body.page.length*(val-1)
-      this.getAllHistoricalBot()
-    }
+    pageJump(val) {
+      this.body.page.offset = this.body.page.length * (val - 1);
+      this.getAllHistoricalBot();
+    },
   },
   computed: {
     totleItemsNum() {
