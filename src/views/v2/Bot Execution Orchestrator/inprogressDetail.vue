@@ -36,12 +36,12 @@
       <el-main>
         <!-- <div class="wrap">
           <div style="width:50%">
-              <p>开始日期</p>
-              <p>{{req.startDateTime}}</p>
+            <p>开始日期</p>
+            <p>{{req.startDateTime}}</p>
           </div>
           <div style="width:50%">
-              <p>结束日期</p>
-              <p>{{req.endDateTime}}</p>
+            <p>结束日期</p>
+            <p>{{req.endDateTime}}</p>
           </div>
         </div>
         <div class="wrap">
@@ -50,40 +50,53 @@
         </div>
         <div>最后一项操作</div>
         <div>
-            <p>错误消息</p>
-            <p>{{req.message}}</p>
+          <p>错误消息</p>
+          <p>{{req.message}}</p>
         </div> -->
       </el-main>
     </el-container>
     <el-container>
-        <el-header>一般详情信息</el-header>
-        <el-main>
-            <div class="wrap">
-                <div class="General-Details">
-                    <p>上次修改时间</p>
-                    <p>{{req.modifiedOn}}</p>
-                </div>
-                <div class="General-Details">
-                    <p>修改者</p>
-                    <p>{{req.modifiedBy}}</p>
-                </div>
-                <div class="General-Details">
-                    <p>对象类型</p>
-                    <p></p>
-                </div>
-            </div>
-        </el-main>
+      <el-header>一般详情信息</el-header>
+      <el-main>
+        <div class="wrap">
+          <div class="General-Details">
+            <p>上次修改时间</p>
+            <p>{{req.modifiedOn}}</p>
+          </div>
+          <div class="General-Details">
+            <p>修改者</p>
+            <p>{{req.modifiedBy}}</p>
+          </div>
+          <div class="General-Details">
+            <p>对象类型</p>
+            <p></p>
+          </div>
+        </div>
+      </el-main>
     </el-container>
   </div>
 </template>
 
 <script>
 import common from "@/api/v1/common";
+import usermanagement from "@/api/v1/usermanagement";
 export default {
   data() {
     return {
       id: "",
       req: {},
+      bodyOfGetAllUsers: {
+        page: {
+          offset: 0,
+          total: 0,
+          totalFilter: 0,
+        },
+        filter: {
+          operator: "eq",
+          field: "id",
+          value: "34",
+        },
+      },
     };
   },
   created() {
@@ -96,11 +109,17 @@ export default {
         .getDetailInfo(this.id)
         .then((response) => {
           this.req = response;
-          console.log(response);
+          this.searchUserName();
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    searchUserName() {
+      this.bodyOfGetAllUsers.filter.value = this.req.modifiedBy;
+      usermanagement.getAllUsers(this.bodyOfGetAllUsers).then((response) => {
+        this.req.modifiedBy = response.list[0].username;
+      });
     },
   },
 };
@@ -150,14 +169,14 @@ body > .el-container {
 p {
   text-align: left;
 }
-div{
-    text-align: left;
+div {
+  text-align: left;
 }
-.wrap{
-    display: flex;
-    justify-content: space-between;
+.wrap {
+  display: flex;
+  justify-content: space-between;
 }
-.General-Details{
-    width: 30%;
+.General-Details {
+  width: 30%;
 }
 </style>
