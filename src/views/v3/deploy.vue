@@ -109,12 +109,12 @@ export default {
       deploy
         .deployBot(this.deployData)
         .then((response) => {
-          debugger;
           this.respData = response.deploymentId;
+          this.$router.push({path: '/activity/inprogress'})
         })
         .catch((error) => {
           this.respData = error.message;
-          console.log(error);
+          console.log(respData);
         });
     },
     getRunnerList() {
