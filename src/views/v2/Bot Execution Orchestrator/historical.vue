@@ -86,7 +86,7 @@ export default {
       this.body.page.offset -= this.body.page.length;
       this.getAllHistoricalBot();
     },
-    //跳转页面
+    //分页跳转
     pageJump(val) {
       this.body.page.offset = this.body.page.length * (val - 1);
       this.getAllHistoricalBot();

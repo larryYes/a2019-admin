@@ -74,10 +74,17 @@ export const constantRouterMap = [
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/inprogressDetail')
       },
       {
-        path: 'schedule',
+        path: '/activity/schedule',
         name: '已计划',
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/schedule.vue'),
         meta: {title: '已计划',icon:'form'}
+      },
+      //编辑计划
+      {
+        path: '/activity/schedule/:id/edit',
+        name: '计划编辑',
+        hidden: true,
+        component: ()=> import('@/views/v2/Bot Execution Orchestrator/scheduleEdit')
       },
       {
         path: 'triggers',

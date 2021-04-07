@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="deployData" :model="deployData" label-width="150px">
+  <el-form ref="deployData" :model="deployData"    >
     <el-form-item label="BOT">
       <el-select
         v-model="deployData.fileId"

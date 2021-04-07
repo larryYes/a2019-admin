@@ -31,5 +31,12 @@ export default {
             url:`/url/v1/schedule/automations?automationIds=` + data,
             method: `delete`
         })
+    },
+    updateSchedules(data){
+        return request({
+            url:`/url/v1/schedule/automations/${data.id}`,
+            method: `put`,
+            data: data
+        })
     }
 }
