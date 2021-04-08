@@ -140,6 +140,12 @@ export const constantRouterMap = [
           component: () => import('@/views/v2/pool/pools.vue'),
           meta: { title: '设备池列表', icon: 'table' }
         },
+        {
+          path: 'credentials',
+          name: '凭证列表',
+          component: () => import('@/views/v2/credentialsVault/credentials.vue'),
+          meta: { title: '凭证列表', icon: 'table' }
+        },
       ]
     },
 
