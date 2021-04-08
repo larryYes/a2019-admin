@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="deployData" :model="deployData"    >
+  <el-form ref="deployData" :model="deployData" >
     <el-form-item label="BOT">
       <el-select
         v-model="deployData.fileId"
@@ -19,13 +19,7 @@
           }}</span>
         </el-option>
       </el-select>
-      <!-- <ul>
-        <li v-for="(variable, index) in variables" v-bind:key="index">
-          {{ variable.name }}——{{ variable.type }}
-        </li> 
-        </ul>-->
-            
-      <div style="width: 40%;margin-left: 30px;margin-top: 30px;">
+      <div style="width: 50%;margin-left: 30px;margin-top: 30px;">
         <p>请将【变量值】修改为需要传入的变量值</p>
         <vue-json-editor
         v-model="deployData.botInput" 
@@ -33,7 +27,8 @@
         lang="zh"  
         >
         </vue-json-editor>
-    </div>
+        <el-button v-on:click="reset()" type="warning">清空</el-button>
+      </div>
     </el-form-item>
 
     <el-form-item label="项目名称">
@@ -120,6 +115,9 @@ export default {
   },
 
   methods: {
+    reset(){
+      this.deployData.botInput = {}
+    },
     getVariables(id) {
       common
         .getBotVariables(id)
@@ -127,7 +125,6 @@ export default {
           this.variables = response.variables;
           // 构建botinput入参格式
           var input = new Map();
-          debugger
           for (let index = 0; index < this.variables.length; index++) {
             var vName = this.variables[index].name;
             if(vName!=='prompt-assignment'){
@@ -186,6 +183,7 @@ export default {
         .getAllPublicBots()
         .then((response) => {
           this.botList = response.list;
+          
         })
         .catch((error) => {
           console.log(error);
