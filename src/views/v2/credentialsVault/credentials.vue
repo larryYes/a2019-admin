@@ -13,7 +13,8 @@ import credential from "@/api/v2/credentialVault.js";
 export default {
   data() {
     return {
-      credentialsList: [],
+
+        credentialsList: [],
     };
   },
 
