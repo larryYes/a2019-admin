@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>
-      <el-radio v-model="body.repeatEnabled" :label="true">重复运行</el-radio>
-      <el-radio v-model="body.repeatEnabled" :label="false">只运行一次</el-radio>
-      <el-form :model="body" class="run-repeated" v-if="body.repeatEnabled">
+      <el-radio v-model="isRepeat" :label="true">重复运行</el-radio>
+      <el-radio v-model="isRepeat" :label="false">只运行一次</el-radio>
+      <el-form :model="body" class="run-repeated" v-if="isRepeat">
         <el-form-item label="开始日期">
           <el-date-picker v-model="body.startDate" type="date" placeholder="选择日期"></el-date-picker>
         </el-form-item>
@@ -18,6 +18,7 @@
              }"
             placeholder="任意时间点"
             format="HH:mm"
+            value-format="HH:mm"
           ></el-time-picker>
         </el-form-item>
         <h4>选择运行频率</h4>
@@ -124,33 +125,34 @@ export default {
   data() {
     return {
       id: "",
+      isRepeat:false,
       body: {
         // id: "",
         // name: "",
         // status: "",
         // description: "",
         // rdpEnabled: true,
-        // scheduleType: "DAILY",
-        // dailyRecurrence: {
-        //   interval: 0,
-        // },
-        // weeklyRecurrence: {
-        //   interval: 0,
-        //   daysOfWeek: [],
-        // },
-        // monthlyDateRecurrence: {
-        //   monthsOfYear: [],
-        //   dateOfMonth: 0,
-        // },
-        // monthlyWeekDayRecurrence: {
-        //   monthsOfYear: [""],
-        //   weekOfMonth: "",
-        //   dayOfWeek: "",
-        // },
+        scheduleType: "DAILY",
+        dailyRecurrence: {
+          interval: 0,
+        },
+        weeklyRecurrence: {
+          interval: 0,
+          daysOfWeek: [],
+        },
+        monthlyDateRecurrence: {
+          monthsOfYear: [],
+          dateOfMonth: 0,
+        },
+        monthlyWeekDayRecurrence: {
+          monthsOfYear: [""],
+          weekOfMonth: "",
+          dayOfWeek: "",
+        },
         startDate: "",
         endDate: "",
         startTime: "",
-        repeatEnabled: true,
+        repeatEnabled: false,
         // repeat_occurrence: {
         //   run_every: "",
         //   timeUnit: "",
@@ -176,13 +178,29 @@ export default {
   },
   methods: {
     onSubmit() {
+        this.bodyChange()
       automations
         .updateSchedules(this.body)
         .then(this.backToScheduleList())
         .catch((error) => {
           console.log(error);
         });
-      console.log(this.body);
+    },
+    bodyChange(){
+        if(this.body.repeatEnabled){
+            if(scheduleTyp=='DAILY'){
+                 delete this.body.weeklyRecurrence
+            delete this.body.monthlyDateRecurrence
+            delete this.body.monthlyWeekDayRecurrence
+            }
+        }
+        else{
+            delete this.body.scheduleType
+            delete this.body.dailyRecurrence
+            delete this.body.weeklyRecurrence
+            delete this.body.monthlyDateRecurrence
+            delete this.body.monthlyWeekDayRecurrence
+        }
     },
     backToScheduleList(){
         this.$router.push({

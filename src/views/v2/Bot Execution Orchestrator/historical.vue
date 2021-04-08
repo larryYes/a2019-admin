@@ -5,8 +5,8 @@
     </div>
     <el-table :data="progressList" style="width: 100%">
       <el-table-column prop="jobExecutionStatus" label="状态" width="150"></el-table-column>
-      <el-table-column prop="automationName" label="项目名称" width="130"></el-table-column>
-      <el-table-column prop="modifiedOn" label="修改时间" width="180"></el-table-column>
+      <el-table-column prop="automationName" label="项目名称" width="240"></el-table-column>
+      <el-table-column prop="modifiedOn" label="修改时间" width="240"></el-table-column>
       <el-table-column prop="deviceName" label="设备名称" width="130"></el-table-column>
       <el-table-column label="操作" width="120">
         <template slot-scope="scope">
