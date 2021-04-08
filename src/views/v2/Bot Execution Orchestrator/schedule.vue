@@ -18,6 +18,11 @@
       <el-table-column prop="name" label="活动名称" width="200"></el-table-column>
       <el-table-column prop="status" label="状态" width="100"></el-table-column>
       <el-table-column prop="fileName" label="机器人名称" width="100"></el-table-column>
+      <el-table-column label="更多操作" width="100">
+        <template slot-scope="scope">
+          <el-button @click.prevent="skipEditPage(scope.row)" type="text" size="small">编辑计划</el-button>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -114,13 +119,21 @@ export default {
       this.multipleSelection = val;
       console.log(this.multipleSelection);
     },
+    //点击进入编辑页面
+    skipEditPage(row) {
+      this.$router.push({
+        path: `/activity/schedule/${row.id}/edit`,
+        query: row,
+      });
+      // console.log(row)
+    },
   },
   mounted() {
     //3秒刷新一次数据
     setInterval(() => {
       this.number = this.number + 1;
     }, 3000);
-  },
+  }, 
   watch: {
     number() {
       //   this.getAllSchedules()
