@@ -6,7 +6,19 @@ export default {
         return request({
             url: '/url/v2/repository/workspaces/public/files/list',
             method: 'post',
-            data: {}
+            data: {
+                "filter": {
+                     "operator": "eq",
+                     "field": "type",
+                     "value": "application/vnd.aa.taskbot"
+                 },
+               "sort": [
+                 {
+                   "field": "id",
+                   "direction": "desc"
+                 }
+               ]
+             }
         })
     }
 }
