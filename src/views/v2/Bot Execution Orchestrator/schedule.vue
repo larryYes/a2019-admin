@@ -150,7 +150,7 @@ export default {
   }, 
   watch: {
     number() {
-      //   this.getAllSchedules()
+        this.getAllSchedules()
     },
   },
 };

@@ -93,7 +93,7 @@ export default {
   },
   watch: {
     number() {
-      // this.getAllInprogressBot()
+      this.getAllInprogressBot()
     },
   },
 };
