@@ -3,10 +3,24 @@
     <div style="margin-top: 20px">
       <el-button type="primary" @click="getAllHistoricalBot()">刷新</el-button>
     </div>
-    <el-table :data="progressList" style="width: 100%">
+    <el-table :data="progressList" style="width: 100%" fit="true">
       <el-table-column prop="jobExecutionStatus" label="状态" width="150"></el-table-column>
-      <el-table-column prop="automationName" label="项目名称" width="240"></el-table-column>
-      <el-table-column prop="modifiedOn" label="修改时间" width="240"></el-table-column>
+      <el-table-column label="项目名称" width="240" >
+        <template slot-scope="scope">
+          <span v-if="scope.row.automationName">{{scope.row.automationName}}</span>
+          <span v-else>==</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="开始时间" width="130">
+        <template slot-scope="scope">
+          <span>{{scope.row.startDateTime | sctTime}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="结束时间" width="130">
+        <template slot-scope="scope">
+          <span>{{scope.row.endDateTime | sctTime}}</span>
+        </template>
+      </el-table-column>
       <el-table-column prop="deviceName" label="设备名称" width="130"></el-table-column>
       <el-table-column label="操作" width="120">
         <template slot-scope="scope">
@@ -90,6 +104,13 @@ export default {
     pageJump(val) {
       this.body.page.offset = this.body.page.length * (val - 1);
       this.getAllHistoricalBot();
+    },
+  },
+  filters: {
+    sctTime(timeData) {
+      let time = timeData.slice(11, 19);
+      let date = timeData.slice(0, 10);
+      return time + " CST " + date;
     },
   },
   computed: {

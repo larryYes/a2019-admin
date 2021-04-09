@@ -14,10 +14,15 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="zonedNextRunDateTime" label="下一次发生时间" width="200"></el-table-column>
+      <el-table-column label="下一次发生时间" width="200">
+        <template slot-scope="scope">
+          <span v-if="scope.row.zonedNextRunDateTime">{{scope.row.zonedNextRunDateTime |sctTime}}</span>
+          <span v-else>不适用</span>
+        </template>
+      </el-table-column>
       <el-table-column prop="name" label="活动名称" width="200"></el-table-column>
       <el-table-column prop="status" label="状态" width="100"></el-table-column>
-      <el-table-column prop="fileName" label="机器人名称" width="100"></el-table-column>
+      <el-table-column prop="fileName" label="机器人名称" width="120"></el-table-column>
       <el-table-column label="更多操作" width="100">
         <template slot-scope="scope">
           <el-button @click.prevent="skipEditPage(scope.row)" type="text" size="small">编辑计划</el-button>
@@ -30,6 +35,7 @@
 
 <script>
 import automations from "@/api/v1/automations";
+
 // import common from "@/api/v1/common";
 
 export default {
@@ -126,6 +132,14 @@ export default {
         query: row,
       });
       // console.log(row)
+    },
+  },
+  filters: {
+    sctTime(timeData) {
+      let d = new Date(timeData)
+      let localTime = d.toString().slice(16,24)
+      let localDate = d.toLocaleDateString()
+      return localTime+' CST '+ localDate
     },
   },
   mounted() {

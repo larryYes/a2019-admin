@@ -31,9 +31,9 @@
         </el-main>
       </el-container>
     </el-container>
-    <el-container>
+    <!-- <el-container>
       <el-header>运行信息详情</el-header>
-      <el-main>
+      <el-main> -->
         <!-- <div class="wrap">
           <div style="width:50%">
             <p>开始日期</p>
@@ -53,8 +53,8 @@
           <p>错误消息</p>
           <p>{{req.message}}</p>
         </div> -->
-      </el-main>
-    </el-container>
+      <!-- </el-main>
+    </el-container> -->
     <el-container>
       <el-header>一般详情信息</el-header>
       <el-main>

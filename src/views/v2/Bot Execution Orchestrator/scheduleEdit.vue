@@ -5,10 +5,20 @@
       <el-radio v-model="isRepeat" :label="false">只运行一次</el-radio>
       <el-form :model="body" class="run-repeated" v-if="isRepeat">
         <el-form-item label="开始日期">
-          <el-date-picker v-model="body.startDate" type="date" placeholder="选择日期"></el-date-picker>
+          <el-date-picker
+            v-model="body.startDate"
+            type="date"
+            placeholder="选择日期"
+            value-format="yyyy-MM-dd"
+          ></el-date-picker>
         </el-form-item>
         <el-form-item label="结束日期">
-          <el-date-picker v-model="body.endDate" type="date" placeholder="选择日期"></el-date-picker>
+          <el-date-picker
+            v-model="body.endDate"
+            type="date"
+            placeholder="选择日期"
+            value-format="yyyy-MM-dd"
+          ></el-date-picker>
         </el-form-item>
         <el-form-item label="开始时间">
           <el-time-picker
@@ -96,7 +106,12 @@
       </el-form>
       <el-form :model="body" class="run-once" v-else>
         <el-form-item label="开始日期">
-          <el-date-picker v-model="body.startDate" type="date" placeholder="选择日期"></el-date-picker>
+          <el-date-picker
+            v-model="body.startDate"
+            type="date"
+            placeholder="选择日期"
+            value-format="yyyy-MM-dd"
+          ></el-date-picker>
         </el-form-item>
         <el-form-item label="开始时间">
           <el-time-picker
@@ -125,7 +140,7 @@ export default {
   data() {
     return {
       id: "",
-      isRepeat:false,
+      isRepeat: false,
       body: {
         // id: "",
         // name: "",
@@ -178,34 +193,39 @@ export default {
   },
   methods: {
     onSubmit() {
-        this.bodyChange()
+      this.bodyChange();
       automations
         .updateSchedules(this.body)
-        .then(this.backToScheduleList())
+        .then(this.$router.go(-1))
         .catch((error) => {
           console.log(error);
         });
     },
-    bodyChange(){
-        if(this.body.repeatEnabled){
-            if(scheduleTyp=='DAILY'){
-                 delete this.body.weeklyRecurrence
-            delete this.body.monthlyDateRecurrence
-            delete this.body.monthlyWeekDayRecurrence
-            }
+    bodyChange() {
+      if (this.isRepeat) {
+        if (this.body.scheduleType == "DAILY") {
+          delete this.body.weeklyRecurrence;
+          delete this.body.monthlyDateRecurrence;
+          delete this.body.monthlyWeekDayRecurrence;
         }
-        else{
-            delete this.body.scheduleType
-            delete this.body.dailyRecurrence
-            delete this.body.weeklyRecurrence
-            delete this.body.monthlyDateRecurrence
-            delete this.body.monthlyWeekDayRecurrence
+        if (this.body.scheduleType == "WEEKLY") {
+          delete this.body.dailyRecurrence;
+          delete this.body.monthlyDateRecurrence;
+          delete this.body.monthlyWeekDayRecurrence;
         }
-    },
-    backToScheduleList(){
-        this.$router.push({
-            path: `/activity/schedule`
-        })
+        if (this.body.scheduleType == "MONTHLY") {
+          delete this.body.weeklyRecurrence;
+          delete this.body.dailyRecurrence;
+
+          delete this.body.monthlyWeekDayRecurrence;
+        }
+      } else {
+        delete this.body.scheduleType;
+        delete this.body.dailyRecurrence;
+        delete this.body.weeklyRecurrence;
+        delete this.body.monthlyDateRecurrence;
+        delete this.body.monthlyWeekDayRecurrence;
+      }
     },
   },
 };
