@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       userList: [],
+      body:{}
     };
   },
 
@@ -23,7 +24,7 @@ export default {
   },
   methods: {
     getAllUser(){
-      usermanagement.getAllUsers().then(response =>{
+      usermanagement.getAllUsers(this.body).then(response =>{
         this.userList = response.list
       })
       .catch((error) =>{

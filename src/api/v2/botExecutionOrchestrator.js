@@ -8,5 +8,12 @@ export default{
             method: 'post',
             data: body
         })
+    },
+    devicesList(){
+        return request({
+            url: '/url/v2/devices/list',
+            method: 'post',
+            data: {}
+        })
     }
 }
