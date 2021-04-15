@@ -32,10 +32,19 @@ export default {
             method: `delete`
         })
     },
+    //更新schedule
     updateSchedules(data){
         return request({
             url:`/url/v1/schedule/automations/${data.id}`,
             method: `put`,
+            data: data
+        })
+    },
+    //新增schedule
+    newSchedules(data){
+        return request({
+            url: `/url/v1/schedule/automations`,
+            method: `post`,
             data: data
         })
     }

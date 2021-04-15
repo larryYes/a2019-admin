@@ -86,6 +86,13 @@ export const constantRouterMap = [
         hidden: true,
         component: ()=> import('@/views/v2/Bot Execution Orchestrator/scheduleEdit')
       },
+      //新增计划
+      {
+        path: `/activity/schedule/new`,
+        name: `新增计划`,
+        hidden: true,
+        component: ()=> import(`@/views/v2/Bot Execution Orchestrator/newSchedule`)
+      },
       {
         path: 'triggers',
         name: '事件触发器',

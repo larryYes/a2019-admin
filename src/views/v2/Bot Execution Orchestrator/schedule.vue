@@ -1,11 +1,23 @@
 <template>
   <div>
-    <div style="margin-top: 20px">
-      <el-button type="primary" @click="getAllSchedule()">刷新</el-button>
-      <el-button type="primary" @click="activateSchedule()">激活</el-button>
-      <el-button type="primary" @click="deactivateSchedule()">停用</el-button>
-      <el-button type="danger" @click="deleteSchedule()">删除</el-button>
-    </div>
+    <el-row >
+      <el-col :span="2">
+        <el-button type="primary" @click="getAllSchedule()">刷新</el-button>
+      </el-col>
+      <el-col :span="2">
+        <el-button type="primary" @click="activateSchedule()">激活</el-button>
+      </el-col>
+      <el-col :span="2">
+        <el-button type="primary" @click="deactivateSchedule()">停用</el-button>
+      </el-col>
+      <el-col :span="2">
+        <el-button type="danger" @click="deleteSchedule()">删除</el-button>
+      </el-col>
+      <el-col :span="2">
+        <el-button type="primary" @click="newSchedule()">新增计划</el-button>
+      </el-col>
+    </el-row>
+
     <el-table
       ref="multipleTable"
       :data="scheduleList"
@@ -133,13 +145,18 @@ export default {
       });
       // console.log(row)
     },
+    newSchedule(){
+      this.$router.push({
+        path:`/activity/schedule/new`
+      })
+    }
   },
   filters: {
     sctTime(timeData) {
-      let d = new Date(timeData)
-      let localTime = d.toString().slice(16,24)
-      let localDate = d.toLocaleDateString()
-      return localTime+' CST '+ localDate
+      let d = new Date(timeData);
+      let localTime = d.toString().slice(16, 24);
+      let localDate = d.toLocaleDateString();
+      return localTime + " CST " + localDate;
     },
   },
   mounted() {
@@ -147,10 +164,10 @@ export default {
     setInterval(() => {
       this.number = this.number + 1;
     }, 3000);
-  }, 
+  },
   watch: {
     number() {
-        this.getAllSchedules()
+      // this.getAllSchedule()
     },
   },
 };
