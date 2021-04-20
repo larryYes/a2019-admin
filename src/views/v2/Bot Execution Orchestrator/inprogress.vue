@@ -1,19 +1,23 @@
 <template>
-  <div>
-    <div style="margin-top: 20px">
-      <el-button type="primary" @click="getAllInprogressBot()">刷新</el-button>
-    </div>
-    <el-table :data="inprogressList" style="width: 100%">
-      <el-table-column prop="status" label="状态" width="180"></el-table-column>
-      <el-table-column prop="automationName" label="项目名称" width="180"></el-table-column>
-      <el-table-column prop="command" label="描述" width="200"></el-table-column>
-      <el-table-column label="操作" width="120">
-        <template slot-scope="scope">
-          <el-button @click.prevent="skipDetailPage(scope.row.id)" type="text" size="small">项目详情</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-  </div>
+  <el-container>
+    <el-header>
+      <div style="margin-top: 20px">
+        <el-button type="primary" @click="getAllInprogressBot()">刷新</el-button>
+      </div>
+    </el-header>
+    <el-main>
+      <el-table :data="inprogressList" style="width: 100%" border="">
+        <el-table-column prop="status" label="状态" width="180"></el-table-column>
+        <el-table-column prop="automationName" label="项目名称" width="180"></el-table-column>
+        <el-table-column prop="command" label="描述" width="200"></el-table-column>
+        <el-table-column label="操作" width="120">
+          <template slot-scope="scope">
+            <el-button @click.prevent="skipDetailPage(scope.row.id)" type="text" size="small">项目详情</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
@@ -84,7 +88,7 @@ export default {
       });
     },
   },
-  
+
   mounted() {
     //3秒刷新一次数据
     setInterval(() => {
@@ -93,7 +97,7 @@ export default {
   },
   watch: {
     number() {
-      this.getAllInprogressBot()
+      this.getAllInprogressBot();
     },
   },
 };

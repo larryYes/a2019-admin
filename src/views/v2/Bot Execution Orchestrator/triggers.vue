@@ -1,20 +1,24 @@
 <template>
-<div>
-  <div style="margin-top: 20px">
-    <el-button type="primary" @click="getAllTrigger()">刷新</el-button>
-  </div>
-  <el-table :data="triggerList" style="width: 100%">
-    <el-table-column prop="userId" label="用户ID" width="180"></el-table-column>
-    <el-table-column prop="id" label="用户" width="200"></el-table-column>
-    <el-table-column prop="botPath" label="机器人路径" width="200"></el-table-column>
-    <el-table-column prop="botName" label="bot名称" width="100"></el-table-column>
-    <!-- <el-table-column label="操作" width="120"> -->
-    <!-- <template slot-scope="scope">
+  <el-container>
+    <el-header>
+      <div style="margin-top: 20px">
+        <el-button type="primary" @click="getAllTrigger()">刷新</el-button>
+      </div>
+    </el-header>
+    <el-main>
+      <el-table :data="triggerList" style="width: 100%">
+        <el-table-column prop="userId" label="用户ID" width="180"></el-table-column>
+        <el-table-column prop="id" label="用户" width="200"></el-table-column>
+        <el-table-column prop="botPath" label="机器人路径" width="200"></el-table-column>
+        <el-table-column prop="botName" label="bot名称" width="100"></el-table-column>
+        <!-- <el-table-column label="操作" width="120"> -->
+        <!-- <template slot-scope="scope">
         <el-button @click.prevent="skipDetailPage(scope.row.id)" type="text" size="small">项目详情</el-button>
       </template>S
-    </el-table-column>-->
-  </el-table>
-  </div>
+        </el-table-column>-->
+      </el-table>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
