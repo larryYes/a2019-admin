@@ -6,7 +6,7 @@
           <el-button type="primary" @click="getAllSchedule()">刷新</el-button>
         </el-col>
         <el-col :span="2">
-          <el-button type="primary" @click="activateSchedule()">激活</el-button>
+          <el-button type="primary" @click="activateSchedule">激活</el-button>
         </el-col>
         <el-col :span="2">
           <el-button type="primary" @click="deactivateSchedule()">停用</el-button>
@@ -77,18 +77,21 @@ export default {
         .getAllSchedules(this.body)
         .then((response) => {
           this.scheduleList = response.list;
+          this.loading = false;
         })
         .catch((error) => {
           console.log(error);
+          this.loading = false;
         });
-      this.loading = false;
     },
     //激活选中的schedule
-    activateSchedule() {
+    activateSchedule(event) {
+      
       if (this.multipleSelection.length == 0) {
         alert("未选择项目");
         return;
       }
+      this.loading = true;
       let selectedList = [];
       for (let i = 0; i < this.multipleSelection.length; i++) {
         selectedList.push(this.multipleSelection[i].id);
@@ -97,10 +100,18 @@ export default {
         .activateSchedules(selectedList)
         .then((response) => {
           this.getAllSchedule();
+          this.loading = false;
         })
         .catch((error) => {
           console.log(error);
+          this.loading = false;
         });
+      let target = event.target;
+      if (target.nodeName == "SPAN") {
+        target = event.target.parentNode;
+        
+        target.blur();
+      }
     },
     //停用选中的schedule
     deactivateSchedule() {
@@ -108,6 +119,7 @@ export default {
         alert("未选择项目");
         return;
       }
+      this.loading = true;
       let selectedList = [];
       for (let i = 0; i < this.multipleSelection.length; i++) {
         selectedList.push(this.multipleSelection[i].id);
@@ -116,9 +128,11 @@ export default {
         .deactivateSchedules(selectedList)
         .then((response) => {
           this.getAllSchedule();
+          this.loading = false;
         })
         .catch((error) => {
           console.log(error);
+          this.loading = false;
         });
     },
     //删除选中的schedule
@@ -127,6 +141,7 @@ export default {
         alert("未选择项目");
         return;
       }
+      this.loading = true;
       let selectedIDs = "";
       for (let i = 0; i < this.multipleSelection.length; i++) {
         selectedIDs = selectedIDs + this.multipleSelection[i].id + "%2C";
@@ -136,9 +151,11 @@ export default {
         .deleteSchedules(selectedIDs)
         .then((response) => {
           this.getAllSchedule();
+          this.loading = false;
         })
         .catch((error) => {
           console.log(error);
+          this.loading = false;
         });
     },
     //选择框方法，将选取行的数据存入multipleSelection中

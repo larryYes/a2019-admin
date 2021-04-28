@@ -8,7 +8,7 @@
         </span>
         <el-input v-model="loginForm.username" name="username" type="text" auto-complete="on" placeholder="username" />
       </el-form-item>
-      <el-form-item prop="password">
+      <!-- <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon-class="password" />
         </span>
@@ -22,11 +22,13 @@
         <span class="show-pwd" @click="showPwd">
           <svg-icon icon-class="eye" />
         </span>
-      </el-form-item>
+      </el-form-item> -->
 
       <el-form-item prop="apiKey">
-
-        <el-input v-model="loginForm.apiKey" name="apiKey" type="text" auto-complete="on" placeholder="username" />
+        <span class="svg-container">
+          <svg-icon icon-class="password" />
+        </span>
+        <el-input v-model="loginForm.apiKey" name="apiKey" type="text" auto-complete="on" placeholder="apiKey" />
       </el-form-item>
 
       <el-form-item>
@@ -34,10 +36,10 @@
           Sign in
         </el-button>
       </el-form-item>
-      <div class="tips">
+      <!-- <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
         <span> password: admin</span>
-      </div>
+      </div> -->
     </el-form>
   </div>
 </template>
